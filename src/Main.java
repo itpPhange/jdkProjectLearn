@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
@@ -8,5 +9,8 @@ public class Main {
         hashMap.put("king",1);
         Object king = hashMap.get("King");
         System.out.println(Integer.valueOf(king.toString()));
+        Runnable runnable = ArrayList::new;
+
     }
 }
+
