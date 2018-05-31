@@ -1,4 +1,4 @@
-package cn.util.concurrent;
+package cn.util.Map;
 
 import java.util.Map;
 import java.util.Objects;
@@ -89,7 +89,7 @@ import java.util.function.Function;
          * @implSpec The default implementation is equivalent to, for this
          * {@code map}:
          * <pre> {@code
-         * for ((Map.Entry<K, V> entry : map.entrySet())
+         * for ((MapDemo.Entry<K, V> entry : map.entrySet())
          *     action.accept(entry.getKey(), entry.getValue());
          * }</pre>
          *
@@ -132,7 +132,7 @@ import java.util.function.Function;
          * except that the action is performed atomically.
          *
          * @implNote This implementation intentionally re-abstracts the
-         * inappropriate default provided in {@code Map}.
+         * inappropriate default provided in {@code MapDemo}.
          *
          * @param key key with which the specified value is to be associated
          * @param value value to be associated with the specified key
@@ -166,7 +166,7 @@ import java.util.function.Function;
          * except that the action is performed atomically.
          *
          * @implNote This implementation intentionally re-abstracts the
-         * inappropriate default provided in {@code Map}.
+         * inappropriate default provided in {@code MapDemo}.
          *
          * @param key key with which the specified value is associated
          * @param value value expected to be associated with the specified key
@@ -196,7 +196,7 @@ import java.util.function.Function;
          * except that the action is performed atomically.
          *
          * @implNote This implementation intentionally re-abstracts the
-         * inappropriate default provided in {@code Map}.
+         * inappropriate default provided in {@code MapDemo}.
          *
          * @param key key with which the specified value is associated
          * @param oldValue value expected to be associated with the specified key
@@ -226,7 +226,7 @@ import java.util.function.Function;
          * except that the action is performed atomically.
          *
          * @implNote This implementation intentionally re-abstracts the
-         * inappropriate default provided in {@code Map}.
+         * inappropriate default provided in {@code MapDemo}.
          *
          * @param key key with which the specified value is associated
          * @param value value to be associated with the specified key
@@ -252,7 +252,7 @@ import java.util.function.Function;
          * @implSpec
          * <p>The default implementation is equivalent to, for this {@code map}:
          * <pre> {@code
-         * for ((Map.Entry<K, V> entry : map.entrySet())
+         * for ((MapDemo.Entry<K, V> entry : map.entrySet())
          *     do {
          *        K k = entry.getKey();
          *        V v = entry.getValue();
