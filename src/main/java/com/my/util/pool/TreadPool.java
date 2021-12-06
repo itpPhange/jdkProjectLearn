@@ -1,12 +1,11 @@
 package main.java.com.my.util.pool;
 
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
-class HoldLockThread implements Runnable{
-private String LockA;
-private String LockB;
+class HoldLockThread implements Callable {
+private final String LockA;
+private final String LockB;
 
     public HoldLockThread(String lockA,String lockB){
         this.LockA=lockA;
@@ -14,9 +13,8 @@ private String LockB;
     }
 
 
-
     @Override
-    public void run() {
+    public Object call() throws Exception {
         synchronized (LockA){
             System.out.println(Thread.currentThread().getName()+"自己持有"+LockA+"尝试获取"+LockB);
             try {
@@ -29,6 +27,7 @@ private String LockB;
             }
 
         }
+        return null;
     }
 }
 
@@ -36,11 +35,23 @@ private String LockB;
 
 public class TreadPool {
 
-    public static void main(String[] args) {
+
+
+    public static void main(String[] args) throws Exception{
+        ThreadPoolExecutor executors = new ThreadPoolExecutor(
+                2,
+                5,
+                10,
+                TimeUnit.NANOSECONDS,
+                new LinkedBlockingQueue<>(3),
+                Executors.defaultThreadFactory(),
+                new ThreadPoolExecutor.AbortPolicy());
         String lockA = "lockA";
         String lockB = "lockB";
-        new Thread(new HoldLockThread(lockA,lockB),"ThreadAAAAA").start();
-        new Thread(new HoldLockThread(lockB,lockA),"ThreadBBBBB").start();
+
+        Future<Object> submit = executors.submit(new HoldLockThread(lockA, lockB));
+        Future<Object> submit1 = executors.submit(new HoldLockThread(lockB, lockA));
+
 
     }
 
